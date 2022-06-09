@@ -1,0 +1,17 @@
+>>Highest level idea:
+A card game simulation.
+Involing 1 human player vs between 2 and 100 computer players
+
+>>Component parts:
+Simulation involes a card table.  And an overall score card.
+Each player will have:
+  --A hand of cards, 
+  --A running score on the scoreboard, 
+  --A notifcation of the round and the card trumps that round and a view of the card table when a game is in play.
+  --A view of who is dealer that round and who is dealing a card during a round.
+There will be an appropriately sized desk of cards based on the number of players
+The random selection of a dealer of the cards
+A gui interface to get the initial set up information
+A gui interface for each round and a view of the score card
+
+>>Class Hierarchty and object map for concepts:
