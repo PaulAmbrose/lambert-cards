@@ -34,3 +34,68 @@ nouns:  table, scorecard, cards, stats(trumps, dealer), card-deck, setup-gui, ro
      -Play round
         -Select winner
           -Update scoreboard
+          
+          
+--------------------------------------------------------------------------------------
+
+* setup_gui
+   -user_input
+     -set_up_game
+       -create_and_shuffle_deck
+
+* setup_round (if higher than round 1, set forward one round)
+   -initiate_round
+     -set round number
+      -set trumps
+       -set_dealer
+        -deal cards(round from dealer)
+         -Set win guesses
+
+* play_round
+     -Play round
+        -Select winner
+          -Update scoreboard
+
+--------------------------------------------------------------------------------------
+
+class setup_gui(object):
+
+    def user_input(self):
+        pass
+        
+    def set_up_game(self):
+        pass
+    
+    def create_and_shuffle_deck(self):
+        pass
+    
+class set_up_round(object):
+
+    def initiate_round(self):
+        pass
+    
+    def set round number(self):
+        pass
+    
+    def set trumps(self):
+        pass
+    
+    def set_dealer(self):
+        pass
+        
+    def deal cards(self):
+        pass
+    
+    def Set win guesses(self):
+        pass
+        
+class play_round(object):
+
+     def play_round(self):
+         pass
+         
+     def Select winner(self):
+         pass
+         
+     def Update scoreboard(self):
+         pass
