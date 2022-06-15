@@ -1,7 +1,9 @@
 class setup_gui(object):
 
     def user_input(self):
-        pass
+        print("Lambert Cards\n\n")
+        user_name = print("Please enter your name >> ")
+        number_of_players("Please the number of players for your game >>")
         
     def set_up_game(self):
         pass
