@@ -1,3 +1,6 @@
+from sys import exit
+from random import randint
+
 class setup_gui(object):
 
     def user_input(self):
