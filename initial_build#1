@@ -5,11 +5,10 @@ class setup_gui(object):
         user_name = input("Please enter your name >> ")
         number_of_players = input("Please the number of players for your game >>")
      
-
 class set_up_game(object):
  
     def number_of_decks_calc(self): 
-        pass
+        
 
     def create_and_shuffle_deck(self):
         pass
