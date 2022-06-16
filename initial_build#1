@@ -3,12 +3,15 @@ from random import randint
 
 class setup_gui(object):
 
-    def user_input(self):
+    def user_input():
         print("Lambert Cards\n\n")
         user_name = input("Please enter your name >> ")
         number_of_players = input("Please the number of players for your game >>")
 
-class set_up_game(object, game_parameters):
+class setup_game(object):
+ 
+    def __init__(self, game_parameters):
+        self.game_parameters = game_parameters
  
     def number_of_decks_calc(self): 
     
@@ -20,24 +23,24 @@ class set_up_game(object, game_parameters):
     def create_and_shuffle_deck(self):
         pass
     
-class set_up_round(object):
+class setup_round(object):
 
     def initiate_round(self):
         pass
     
-    def set round number(self):
+    def set_round_number(self):
         pass
     
-    def set trumps(self):
+    def set_trumps(self):
         pass
     
     def set_dealer(self):
         pass
         
-    def deal cards(self):
+    def deal_cards(self):
         pass
     
-    def Set win guesses(self):
+    def win_guesses(self):
         pass
         
 class play_round(object):
@@ -45,13 +48,13 @@ class play_round(object):
      def play_round(self):
          pass
          
-     def Select winner(self):
+     def select_winner(self):
          pass
          
-     def Update scoreboard(self):
+     def update_scoreboard(self):
          pass
 
 
 #getting basic parameters and add these to an object that is passed into set_up_game
-game1_parameters = setup_gui()
-game1 = setup_game(game1_parameters)
+game1_parameters = setup_gui.user_input()
+game1 = setup_game.number_of_decks_calc(game1_parameters)
