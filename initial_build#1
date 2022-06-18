@@ -1,7 +1,7 @@
 from sys import exit
 from random import randint
 
-class setup_gui(object):
+class SetupGui:
     
     def __init__(self):
         self.user_name = user_name
@@ -9,12 +9,10 @@ class setup_gui(object):
     
     def user_input():
         print("Lambert Cards\n\n")
-        user_name = input("Please enter your name >> ")
-        number_of_players = input("Please the number of players for your game >>")
+        self.user_name = input("Please enter your name >> ")
+        self.number_of_players = input("Please the number of players for your game >>")
 
-        return user_name, number_of_players
-
-class setup_game(object):
+class SetupGame(object):
  
     def __init__(self, game_parameters):
         self.game_parameters = game_parameters
@@ -29,7 +27,7 @@ class setup_game(object):
     def create_and_shuffle_deck(self):
         pass
     
-class setup_round(object):
+class SetupRound(object):
 
     def initiate_round(self):
         pass
@@ -49,7 +47,7 @@ class setup_round(object):
     def win_guesses(self):
         pass
         
-class play_round(object):
+class PlayRound(object):
 
      def play_round(self):
          pass
@@ -62,6 +60,6 @@ class play_round(object):
 
 
 #getting basic parameters and add these to an object that is passed into set_up_game
-game1_parameters = setup_gui.user_input()
+game1_parameters = SetupGui.user_input()
 print(game1_parameters.number_of_players)
-game1 = setup_game.number_of_decks_calc(game1_parameters)
+game1 = SetupGame.number_of_decks_calc(game1_parameters)
