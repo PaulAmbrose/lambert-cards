@@ -4,13 +4,14 @@ from random import randint
 class SetupGui:
     
     def __init__(self):
-        self.user_name = user_name
-        self.number_of_players = number_of_players
+        self.user_name = "Test1"
+        self.number_of_players = 10
     
-    def user_input():
+    def user_input(self):
         print("Lambert Cards\n\n")
         self.user_name = input("Please enter your name >> ")
         self.number_of_players = input("Please the number of players for your game >>")
+    
 
 class SetupGame(object):
  
@@ -60,6 +61,7 @@ class PlayRound(object):
 
 
 #getting basic parameters and add these to an object that is passed into set_up_game
-game1_parameters = SetupGui.user_input()
-print(game1_parameters.number_of_players)
-game1 = SetupGame.number_of_decks_calc(game1_parameters)
+game1_parameters = SetupGui()
+print(game1_parameters.user_name)
+game1_parameters.user_input()
+print(game1_parameters.user_name)
