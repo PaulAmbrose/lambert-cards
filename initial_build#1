@@ -10,20 +10,25 @@ class SetupGui:
     def user_input(self):
         print("Lambert Cards\n\n")
         self.user_name = input("Please enter your name >> ")
-        self.number_of_players = input("Please the number of players for your game >>")
+        self.number_of_players = int(input("Please the number of players for your game >>"))
     
 
 class SetupGame(object):
  
     def __init__(self, game_parameters):
         self.game_parameters = game_parameters
+        self.number_of_packs = 1
  
     def number_of_decks_calc(self): 
     
         if self.game_parameters.number_of_players > 5:
-            print("more than 5")
+            pack_size = 52
+            
+            while (pack_size / self.game_parameters.number_of_players < 10):
+                self.number_of_packs = self.number_of_packs + 1
+                pack_size = pack_size + 52
         else:
-            print("Less than 5")
+            self.number_of_packs = 1
 
     def create_and_shuffle_deck(self):
         pass
@@ -60,8 +65,12 @@ class PlayRound(object):
          pass
 
 
+
 #getting basic parameters and add these to an object that is passed into set_up_game
 game1_parameters = SetupGui()
-print(game1_parameters.user_name)
 game1_parameters.user_input()
-print(game1_parameters.user_name)
+
+#set up the game using the parameters provided: deck size,
+game1_setup = SetupGame(game1_parameters)
+game1_setup.number_of_decks_calc()
+print(game1_setup.number_of_packs)
