@@ -20,7 +20,6 @@ class SetupGame(object):
         self.game_pack = "test"
  
     def number_of_decks_calc(self): 
-    
         if self.game_parameters.number_of_players > 5:
             pack_size = 52
             
@@ -31,7 +30,6 @@ class SetupGame(object):
             self.number_of_packs = 1
 
     def create_deck(self):
-       
         standard_pack = [
         "A-H", "K-H", "Q-H", "J-H", "10-H", "9-H", "8-H", "7-H", "6-H", "5-H", "4-H", "3-H", "2-H",
         "A-S", "K-S", "Q-S", "J-S", "10-S", "9-S", "8-S", "7-S", "6-S", "5-S", "4-S", "3-S", "2-S",
@@ -43,17 +41,36 @@ class SetupGame(object):
             standard_pack = standard_pack + standard_pack
         
         self.game_pack = standard_pack
+        
+class SetupRound(object, number_of_players):
     
-class SetupRound(object):
+    def __init__(self):
+        self.round = "start"
+        self.trumps_index = "start"
+        self.trumps_progression = ["Hearts", "Clubs", "Diamonds", "Spades"]
+        self.dealer = start
+        self.card_hand = []
+        self.win_guesses = 0
+        self.number_of_players = number_of_players
 
     def initiate_round(self):
-        pass
+        set_round_number()
+        set_trumps()
+        set_dealer()
     
     def set_round_number(self):
-        pass
+        if (round == "start"):
+            self.round = 1
+        elif(self.round >= 1):
+            self.round = self.round + 1
     
     def set_trumps(self):
-        pass
+        if (self.trumps == "start"):
+            self.trumps_index = 0
+        if(self.trump >=0 and self.trump <4):
+            self.trumps_index = self.trumps_index + 1
+        else:
+            self.trumps_index = 0
     
     def set_dealer(self):
         pass
@@ -83,3 +100,7 @@ game1_parameters.user_input()
 game1_setup = SetupGame(game1_parameters)
 game1_setup.number_of_decks_calc()
 game1_setup.create_deck()
+
+#create the current round and set correct round parameters for the game
+game1_round = SetupRound(game1_parameters)
+game1_round.initiate_round()
