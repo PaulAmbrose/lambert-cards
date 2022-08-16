@@ -42,21 +42,21 @@ class SetupGame(object):
         
         self.game_pack = standard_pack
         
-class SetupRound(object, number_of_players):
+class SetupRound(object):
     
-    def __init__(self):
+    def __init__(self, number_of_players):
         self.round = "start"
         self.trumps_index = "start"
         self.trumps_progression = ["Hearts", "Clubs", "Diamonds", "Spades"]
-        self.dealer = start
+        self.dealer = "start"
         self.card_hand = []
         self.win_guesses = 0
         self.number_of_players = number_of_players
 
     def initiate_round(self):
-        set_round_number()
-        set_trumps()
-        set_dealer()
+        self.set_round_number
+        self.set_trumps
+        self.set_dealer
     
     def set_round_number(self):
         if (round == "start"):
@@ -80,21 +80,13 @@ class SetupRound(object, number_of_players):
     
     def win_guesses(self):
         pass
-        
-class PlayRound(object):
-
-     def play_round(self):
-         pass
-         
-     def select_winner(self):
-         pass
-         
-     def update_scoreboard(self):
-         pass
 
 #getting basic parameters and add these to an object that is passed into set_up_game
 game1_parameters = SetupGui()
 game1_parameters.user_input()
+
+#print(game1_parameters.user_name)
+#print(game1_parameters.number_of_players)
 
 #set up the game using the parameters provided: deck size,
 game1_setup = SetupGame(game1_parameters)
@@ -102,5 +94,5 @@ game1_setup.number_of_decks_calc()
 game1_setup.create_deck()
 
 #create the current round and set correct round parameters for the game
-game1_round = SetupRound(game1_parameters)
+game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
