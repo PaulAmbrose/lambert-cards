@@ -85,9 +85,6 @@ class SetupRound(object):
 game1_parameters = SetupGui()
 game1_parameters.user_input()
 
-#print(game1_parameters.user_name)
-#print(game1_parameters.number_of_players)
-
 #set up the game using the parameters provided: deck size,
 game1_setup = SetupGame(game1_parameters)
 game1_setup.number_of_decks_calc()
