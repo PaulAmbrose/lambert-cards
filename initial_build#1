@@ -46,32 +46,32 @@ class SetupRound(object):
     
     def __init__(self, number_of_players):
         self.round = "start"
-        self.trumps_index = "start"
+        self.trumps_index = 3
         self.trumps_progression = ["Hearts", "Clubs", "Diamonds", "Spades"]
-        self.dealer = "start"
+        self.trumps = self.trumps_progression[self.trumps_index]
+        self.number_of_players = number_of_players
+        self.dealer = self.number_of_players
         self.card_hand = []
         self.win_guesses = 0
-        self.number_of_players = number_of_players
+
 
     def initiate_round(self):
-        self.set_round_number
-        self.set_trumps
-        self.set_dealer
+        self.set_round_number()
+        self.set_trumps()
+        self.set_dealer()
     
     def set_round_number(self):
-        if (round == "start"):
+        if (self.round == "start"):
             self.round = 1
         elif(self.round >= 1):
             self.round = self.round + 1
     
     def set_trumps(self):
-        if (self.trumps == "start"):
+        if (self.trumps_index == 3):
             self.trumps_index = 0
-        if(self.trump >=0 and self.trump <4):
+        elif(self.trumps_index >= 0 and self.trumps_index <= 3):
             self.trumps_index = self.trumps_index + 1
-        else:
-            self.trumps_index = 0
-    
+
     def set_dealer(self):
         pass
         
@@ -93,3 +93,12 @@ game1_setup.create_deck()
 #create the current round and set correct round parameters for the game
 game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
+print(game1_round.trumps)
+game1_round.set_trumps()
+print(game1_round.trumps)
+print(game1_round.trumps)
+game1_round.set_trumps()
+print(game1_round.trumps)
+print(game1_round.trumps)
+game1_round.set_trumps()
+print(game1_round.trumps)
