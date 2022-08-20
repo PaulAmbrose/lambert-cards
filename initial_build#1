@@ -1,28 +1,31 @@
 from sys import exit
 from random import randint
 
+
 class SetupGui:
-    
+
     def __init__(self):
         self.user_name = "Test1"
         self.number_of_players = 10
-    
+
     def user_input(self):
         print("Lambert Cards\n\n")
         self.user_name = input("Please enter your name >> ")
-        self.number_of_players = int(input("Please the number of players for your game >>"))
-    
+        self.number_of_players = int(
+            input("Please the number of players for your game >>"))
+
+
 class SetupGame(object):
- 
+
     def __init__(self, game_parameters):
         self.game_parameters = game_parameters
         self.number_of_packs = 1
         self.game_pack = "test"
- 
-    def number_of_decks_calc(self): 
+
+    def number_of_decks_calc(self):
         if self.game_parameters.number_of_players > 5:
             pack_size = 52
-            
+
             while (pack_size / self.game_parameters.number_of_players < 10):
                 self.number_of_packs = self.number_of_packs + 1
                 pack_size = pack_size + 52
@@ -31,47 +34,50 @@ class SetupGame(object):
 
     def create_deck(self):
         standard_pack = [
-        "A-H", "K-H", "Q-H", "J-H", "10-H", "9-H", "8-H", "7-H", "6-H", "5-H", "4-H", "3-H", "2-H",
-        "A-S", "K-S", "Q-S", "J-S", "10-S", "9-S", "8-S", "7-S", "6-S", "5-S", "4-S", "3-S", "2-S",
-        "A-C", "K-C", "Q-C", "J-C", "10-C", "9-C", "8-C", "7-C", "6-C", "5-C", "4-C", "3-C", "2-C",
-        "A-D", "K-D", "Q-D", "J-D", "10-D", "9-D", "8-D", "7-D", "6-D", "5-D", "4-D", "3-D", "2-D"
+            "A-H", "K-H", "Q-H", "J-H", "10-H", "9-H", "8-H", "7-H", "6-H", "5-H", "4-H", "3-H", "2-H",
+            "A-S", "K-S", "Q-S", "J-S", "10-S", "9-S", "8-S", "7-S", "6-S", "5-S", "4-S", "3-S", "2-S",
+            "A-C", "K-C", "Q-C", "J-C", "10-C", "9-C", "8-C", "7-C", "6-C", "5-C", "4-C", "3-C", "2-C",
+            "A-D", "K-D", "Q-D", "J-D", "10-D", "9-D", "8-D", "7-D", "6-D", "5-D", "4-D", "3-D", "2-D"
         ]
-        
+
         while (self.number_of_packs * 52 > len(standard_pack)):
             standard_pack = standard_pack + standard_pack
-        
+
         self.game_pack = standard_pack
-        
+
+
 class SetupRound(object):
-    
+
     def __init__(self, number_of_players):
         self.round = "start"
-        self.trumps_index = 3
-        self.trumps_progression = ["Hearts", "Clubs", "Diamonds", "Spades"]
+        self.trumps_index = 4
+        self.trumps_progression = [
+            "Hearts", "Clubs", "Diamonds", "Spades", "No Trumps"]
         self.number_of_players = number_of_players
         self.dealer = 0
-        self.card_hand = []
+        self.card_hands = []
         self.win_guesses = 0
         self.trumps = 1
-
+        self.number_of_cards_key = {1: 10, 2: 9, 3: 8,
+                                    4: 7, 5: 6, 6: 5, 7: 4, 8: 3, 9: 2, 10: 1}
 
     def initiate_round(self):
         self.set_round_number()
         self.set_trumps()
         self.set_dealer()
-    
+
     def set_round_number(self):
         if (self.round == "start"):
             self.round = 1
         elif(self.round >= 1):
             self.round = self.round + 1
-    
+
     def set_trumps(self):
-        if (self.trumps_index == 3):
+        if (self.trumps_index == 4):
             self.trumps_index = 0
-        elif(self.trumps_index >= 0 and self.trumps_index <= 3):
+        elif(self.trumps_index >= 0 and self.trumps_index <= 4):
             self.trumps_index = self.trumps_index + 1
-            
+
         self.parse_trumps()
 
     def parse_trumps(self):
@@ -79,22 +85,37 @@ class SetupRound(object):
 
     def set_dealer(self):
         self.dealer = randint(0, self.number_of_players)
-        
-    def deal_cards(self):
-        pass
-    
+
+    def deal_cards(self, card_deck):
+        counter = 0
+        while counter < self.number_of_players:
+            self.card_hands.append([counter])
+            counter = counter + 1
+
+        counter = 0
+        while counter < self.number_of_cards_key[self.round]:
+            random_card = card_deck[randint(0, len(card_deck))]
+            card_deck.remove(random_card)
+            self.card_hands[counter].append(random_card)
+            counter = counter + 1
+
+        print(len(card_deck))
+        print(self.card_hands)
+
     def win_guesses(self):
         pass
 
-#getting basic parameters and add these to an object that is passed into set_up_game
+
+# getting basic parameters and add these to an object that is passed into set_up_game
 game1_parameters = SetupGui()
 game1_parameters.user_input()
 
-#set up the game using the parameters provided: deck size,
+# set up the game using the parameters provided: deck size,
 game1_setup = SetupGame(game1_parameters)
 game1_setup.number_of_decks_calc()
 game1_setup.create_deck()
 
-#create the current round and set correct round parameters for the game
+# create the current round and set correct round parameters for the game
 game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
+game1_round.deal_cards(game1_setup.game_pack)
