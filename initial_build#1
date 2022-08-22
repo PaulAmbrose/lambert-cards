@@ -91,16 +91,17 @@ class SetupRound(object):
         while counter < self.number_of_players:
             self.card_hands.append([counter])
             counter = counter + 1
+        print(self.card_hands)
 
         counter = 0
-        while counter < self.number_of_cards_key[self.round]:
-            random_card = card_deck[randint(0, len(card_deck))]
+        counter_cards = 0
+        card_deck_size = len(card_deck)
+        while counter_cards < self.number_of_cards_key[self.round]:
+            random_card = card_deck[randint(0, card_deck_size)]
             card_deck.remove(random_card)
             self.card_hands[counter].append(random_card)
-            counter = counter + 1
-
-        print(len(card_deck))
-        print(self.card_hands)
+            counter_cards = counter_cards + 1
+            card_deck_size = card_deck_size -1
 
     def win_guesses(self):
         pass
