@@ -87,21 +87,14 @@ class SetupRound(object):
         self.dealer = randint(0, self.number_of_players)
 
     def deal_cards(self, card_deck):
-        counter = 0
-        while counter < self.number_of_players:
-            self.card_hands.append([counter])
-            card_deck_size = len(card_deck)
-            counter_cards = 0
-            while counter_cards + 1 < self.number_of_cards_key[self.round]:
-                random_card = card_deck[randint(0, card_deck_size)]
-                card_deck.remove(random_card)
-                self.card_hands[counter].append(random_card)
-                counter_cards = counter_cards + 1
-                card_deck_size = card_deck_size - 1
-            counter = counter + 1
-        print(self.card_hands)
+        # for players in range(0, self.number_of_players):
+        #    self.card_hands.append([players])
 
-        counter = 0
+        for cards_required in range(0, self.number_of_cards_key[self.round]):
+            random_card = card_deck[randint(0, card_deck_size)]
+            card_deck.remove(random_card)
+            self.card_hands[cards_required].append(random_card)
+            card_deck_size = card_deck_size - 1
 
     def win_guesses(self):
         pass
