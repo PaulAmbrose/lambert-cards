@@ -93,7 +93,7 @@ class SetupRound(object):
             for cards_required in range(0, self.number_of_cards_key[self.round]):
                 random_card = card_deck[randint(0, len(card_deck)-1)]
                 card_deck.remove(random_card)
-                self.card_hands.append(random_card)
+                self.card_hands[players].append(random_card)
 
         print(self.card_hands)
 
