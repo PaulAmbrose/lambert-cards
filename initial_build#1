@@ -56,7 +56,7 @@ class SetupRound(object):
         self.number_of_players = number_of_players
         self.dealer = 0
         self.card_hands = []
-        self.win_guesses = 0
+        self.players_win_guesses = []
         self.trumps = 1
         self.number_of_cards_key = {1: 10, 2: 9, 3: 8,
                                     4: 7, 5: 6, 6: 5, 7: 4, 8: 3, 9: 2, 10: 1}
@@ -89,16 +89,22 @@ class SetupRound(object):
     def deal_cards(self, card_deck):
         for players in range(0, self.number_of_players):
             self.card_hands.append([players])
+            self.players_win_guesses.append([players])
 
             for cards_required in range(0, self.number_of_cards_key[self.round]):
                 random_card = card_deck[randint(0, len(card_deck)-1)]
                 card_deck.remove(random_card)
                 self.card_hands[players].append(random_card)
 
-        print(self.card_hands)
-
     def win_guesses(self):
-        pass
+        # get users prediction
+        print("\nThis is your hand\n")
+        hand = self.card_hands[0]
+        print(hand[1:])
+        user_round_win_guess = input(
+            "How many rounds do you think you will win? >>")
+
+        # use algorhythmn to get computer players predictions
 
 
 # getting basic parameters and add these to an object that is passed into set_up_game
@@ -114,3 +120,4 @@ game1_setup.create_deck()
 game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
 game1_round.deal_cards(game1_setup.game_pack)
+game1_round.win_guesses()
