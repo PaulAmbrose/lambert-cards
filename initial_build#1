@@ -100,14 +100,21 @@ class SetupRound(object):
         # get users prediction
         print("\nThis is your hand\n")
         hand = self.card_hands[0]
-        print(hand[1:])
-        user_round_win_guess = input(
+        hand = hand[1:]
+        hand.sort()
+        print(hand)
+        self.players_win_guesses[0] = input(
             "How many rounds do you think you will win? >>")
 
         # use algorhythmn to get computer players predictions
+        for computer_players in range(1, self.number_of_players):
+            self.players_win_guesses[computer_players] = "test_complete"
+
+        print(self.players_win_guesses)
+        # second loop going through cards
 
 
-# getting basic parameters and add these to an object that is passed into set_up_game
+        # getting basic parameters and add these to an object that is passed into set_up_game
 game1_parameters = SetupGui()
 game1_parameters.user_input()
 
