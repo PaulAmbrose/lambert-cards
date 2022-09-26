@@ -111,7 +111,7 @@ class SetupRound(object):
             # second loop going through cards
             player_guess = 0
             for card_in_hand in self.card_hands[computer_players]:
-                print (card_in_hand)
+
                 if card_in_hand == "A-H" or card_in_hand == "K-H" or \
                 card_in_hand == "Q-H" or card_in_hand == "A-S" or \
                 card_in_hand == "K-S" or card_in_hand == "Q-S" or \
