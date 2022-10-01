@@ -139,4 +139,3 @@ game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
 game1_round.deal_cards(game1_setup.game_pack)
 game1_round.win_guesses()
-# test
