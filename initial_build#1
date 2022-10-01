@@ -103,7 +103,7 @@ class SetupRound(object):
         hand = hand[1:]
         hand.sort()
         print(hand)
-        self.players_win_guesses[0] = int (input(
+        self.players_win_guesses[0] = int(input(
             "How many rounds do you think you will win? >>"))
 
         # use algorhythmn to get computer players predictions
@@ -113,12 +113,12 @@ class SetupRound(object):
             for card_in_hand in self.card_hands[computer_players]:
 
                 if card_in_hand == "A-H" or card_in_hand == "K-H" or \
-                card_in_hand == "Q-H" or card_in_hand == "A-S" or \
-                card_in_hand == "K-S" or card_in_hand == "Q-S" or \
-                card_in_hand == "A-C" or card_in_hand == "K-C" or \
-                card_in_hand == "Q-C" or card_in_hand == "A-D" or \
-                card_in_hand == "K-D" or card_in_hand == "Q-D":
-                    
+                        card_in_hand == "Q-H" or card_in_hand == "A-S" or \
+                        card_in_hand == "K-S" or card_in_hand == "Q-S" or \
+                        card_in_hand == "A-C" or card_in_hand == "K-C" or \
+                        card_in_hand == "Q-C" or card_in_hand == "A-D" or \
+                        card_in_hand == "K-D" or card_in_hand == "Q-D":
+
                     player_guess = player_guess + 1
             self.players_win_guesses[computer_players] = player_guess
 
@@ -139,3 +139,4 @@ game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
 game1_round.deal_cards(game1_setup.game_pack)
 game1_round.win_guesses()
+# test
