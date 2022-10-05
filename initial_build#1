@@ -122,7 +122,17 @@ class SetupRound(object):
                     player_guess = player_guess + 1
             self.players_win_guesses[computer_players] = player_guess
 
-        print(self.players_win_guesses)
+
+class play_round(object):
+
+    def play_round(self):
+        pass
+
+    def select_winner(self):
+        pass
+
+    def update_scoreboard(self):
+        pass
 
 
 # getting basic parameters and add these to an object that is passed into set_up_game
@@ -139,3 +149,5 @@ game1_round = SetupRound(game1_parameters.number_of_players)
 game1_round.initiate_round()
 game1_round.deal_cards(game1_setup.game_pack)
 game1_round.win_guesses()
+
+# play the round, find winner, update scoreboard
